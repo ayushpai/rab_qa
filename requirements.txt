@@ -1,0 +1,12 @@
+torch
+transformers
+sentence-transformers
+faiss-cpu
+biopython
+requests
+tqdm
+pandas
+numpy
+openai
+datasets
+python-dotenv

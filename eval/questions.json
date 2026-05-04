@@ -1,0 +1,902 @@
+[
+  {
+    "id": "Q001",
+    "question": "What is the primary function of human TP53 (tumor protein p53)?",
+    "ground_truth": "Acts as a tumor suppressor. Sequence-specific DNA-binding transcription factor that induces growth arrest or apoptosis in response to cellular stress. Activates target genes involved in cell cycle arrest (e.g., CDKN1A) and apoptosis (e.g., BAX).",
+    "relevant_uniprot_ids": ["P04637"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q002",
+    "question": "How many amino acids does the human TP53 protein contain?",
+    "ground_truth": "393 amino acids.",
+    "relevant_uniprot_ids": ["P04637"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q003",
+    "question": "What subcellular locations is human TP53 found in?",
+    "ground_truth": "Nucleus; Cytoplasm. Predominantly nuclear.",
+    "relevant_uniprot_ids": ["P04637"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q004",
+    "question": "Which inherited cancer syndrome is associated with germline mutations in human TP53 (P04637)?",
+    "ground_truth": "Li-Fraumeni syndrome (LFS), characterized by early-onset cancers including soft-tissue sarcomas, breast cancer, brain tumors, and adrenocortical carcinoma.",
+    "relevant_uniprot_ids": ["P04637"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q005",
+    "question": "What structural domains are present in human TP53 (P04637)?",
+    "ground_truth": "N-terminal transactivation domain (TAD), proline-rich region, central sequence-specific DNA-binding domain, tetramerization domain, and C-terminal regulatory domain.",
+    "relevant_uniprot_ids": ["P04637"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q006",
+    "question": "In what quaternary structure does human TP53 (P04637) bind DNA?",
+    "ground_truth": "Homotetramer (dimer of dimers); four subunits assemble via the tetramerization domain to bind DNA as a tetramer.",
+    "relevant_uniprot_ids": ["P04637"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q007",
+    "question": "What is the molecular function of human EGFR (P00533)?",
+    "ground_truth": "Receptor protein-tyrosine kinase. Binds EGF and related ligands, triggering autophosphorylation and downstream signaling cascades that regulate cell proliferation, survival, and differentiation.",
+    "relevant_uniprot_ids": ["P00533"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q008",
+    "question": "How many transmembrane domains does human EGFR (P00533) contain?",
+    "ground_truth": "1 (single-pass type I membrane protein).",
+    "relevant_uniprot_ids": ["P00533"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q009",
+    "question": "How many amino acids does human EGFR (P00533) contain?",
+    "ground_truth": "1210 amino acids.",
+    "relevant_uniprot_ids": ["P00533"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q010",
+    "question": "What cancer type most frequently harbors activating mutations in EGFR (P00533)?",
+    "ground_truth": "Non-small cell lung cancer (NSCLC), particularly lung adenocarcinoma.",
+    "relevant_uniprot_ids": ["P00533"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q011",
+    "question": "What is the catalytic activity of human EGFR (P00533)?",
+    "ground_truth": "Protein-tyrosine kinase activity: ATP + protein-L-tyrosine = ADP + protein-L-tyrosine phosphate (EC 2.7.10.1).",
+    "relevant_uniprot_ids": ["P00533"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q012",
+    "question": "What ligands activate EGFR (P00533) signaling?",
+    "ground_truth": "Epidermal growth factor (EGF), TGF-alpha, amphiregulin, epiregulin, betacellulin, heparin-binding EGF, and epigen.",
+    "relevant_uniprot_ids": ["P00533"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q013",
+    "question": "What is the biological function of human hemoglobin subunit beta (HBB, P68871)?",
+    "ground_truth": "Oxygen transport from the lungs to peripheral tissues. Forms part of the adult hemoglobin alpha2-beta2 heterotetramer and binds oxygen via its heme group.",
+    "relevant_uniprot_ids": ["P68871"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q014",
+    "question": "How many amino acids does mature human HBB (P68871) contain?",
+    "ground_truth": "147 amino acids.",
+    "relevant_uniprot_ids": ["P68871"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q015",
+    "question": "What amino acid substitution in HBB (P68871) causes sickle cell disease?",
+    "ground_truth": "p.Glu6Val (glutamic acid to valine at position 6 of the mature protein, also written as E6V). This creates HbS (sickle hemoglobin).",
+    "relevant_uniprot_ids": ["P68871"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q016",
+    "question": "What prosthetic group does HBB (P68871) bind to carry oxygen?",
+    "ground_truth": "Heme (iron-protoporphyrin IX). One heme per subunit.",
+    "relevant_uniprot_ids": ["P68871"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q017",
+    "question": "What disease is caused by reduced or absent production of HBB (P68871)?",
+    "ground_truth": "Beta-thalassemia (thalassemia, beta type). Severe forms cause thalassemia major (Cooley anemia).",
+    "relevant_uniprot_ids": ["P68871"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q018",
+    "question": "What chemical reaction does human superoxide dismutase 1 (SOD1, P00441) catalyze?",
+    "ground_truth": "2 superoxide (O2−) + 2 H+ → hydrogen peroxide (H2O2) + O2. Destroys superoxide radicals to protect cells from oxidative damage. EC 1.15.1.1.",
+    "relevant_uniprot_ids": ["P00441"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q019",
+    "question": "What metal cofactors does human SOD1 (P00441) require?",
+    "ground_truth": "Copper (Cu2+) and zinc (Zn2+). One copper and one zinc ion per subunit.",
+    "relevant_uniprot_ids": ["P00441"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q020",
+    "question": "How many amino acids does human SOD1 (P00441) contain?",
+    "ground_truth": "154 amino acids.",
+    "relevant_uniprot_ids": ["P00441"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q021",
+    "question": "What neurodegenerative disease is associated with mutations in human SOD1 (P00441)?",
+    "ground_truth": "Amyotrophic lateral sclerosis (ALS), also known as Lou Gehrig's disease. SOD1 mutations account for ~20% of familial ALS cases.",
+    "relevant_uniprot_ids": ["P00441"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q022",
+    "question": "What is the quaternary structure of human SOD1 (P00441)?",
+    "ground_truth": "Homodimer. Two identical subunits associate to form the active enzyme.",
+    "relevant_uniprot_ids": ["P00441"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q023",
+    "question": "In what subcellular compartments is human SOD1 (P00441) found?",
+    "ground_truth": "Cytoplasm; nucleus; mitochondrial intermembrane space.",
+    "relevant_uniprot_ids": ["P00441"],
+    "category": "localization",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q024",
+    "question": "What is the primary function of human insulin (INS, P01308)?",
+    "ground_truth": "Regulates blood glucose homeostasis. Promotes cellular uptake of glucose and stimulates glycogen synthesis, lipid synthesis, and protein synthesis. Decreases blood glucose concentration.",
+    "relevant_uniprot_ids": ["P01308"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q025",
+    "question": "Which specialized cell type produces and secretes human insulin (P01308)?",
+    "ground_truth": "Beta cells (B cells) of the islets of Langerhans in the pancreas.",
+    "relevant_uniprot_ids": ["P01308"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q026",
+    "question": "What is the chain structure of mature human insulin (P01308)?",
+    "ground_truth": "Two polypeptide chains: A chain (21 amino acids) and B chain (30 amino acids), connected by two inter-chain disulfide bonds (A7-B7 and A20-B19) and one intra-chain disulfide bond within the A chain (A6-A11).",
+    "relevant_uniprot_ids": ["P01308"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q027",
+    "question": "What disease results from autoimmune destruction of insulin-producing cells, requiring exogenous insulin (P01308)?",
+    "ground_truth": "Type 1 diabetes mellitus (T1DM, insulin-dependent diabetes mellitus, IDDM).",
+    "relevant_uniprot_ids": ["P01308"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q028",
+    "question": "What receptor does insulin (P01308) bind to initiate its signaling?",
+    "ground_truth": "Insulin receptor (INSR, P06213). Binding activates the receptor's intrinsic tyrosine kinase activity.",
+    "relevant_uniprot_ids": ["P01308"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q029",
+    "question": "What is the function of human beta-actin (ACTB, P60709)?",
+    "ground_truth": "Major cytoskeletal protein. Involved in cell motility, structure, integrity, and intracellular signaling. Polymerizes to form microfilaments. In the nucleus, plays roles in transcription regulation.",
+    "relevant_uniprot_ids": ["P60709"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q030",
+    "question": "How many amino acids does human ACTB (P60709) contain?",
+    "ground_truth": "375 amino acids.",
+    "relevant_uniprot_ids": ["P60709"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q031",
+    "question": "What small molecule does beta-actin (ACTB, P60709) bind to enable polymerization?",
+    "ground_truth": "ATP (and Mg2+). ATP-bound actin (G-actin) polymerizes into filaments; ATP is hydrolyzed to ADP during polymerization.",
+    "relevant_uniprot_ids": ["P60709"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q032",
+    "question": "In what subcellular compartments is human ACTB (P60709) located?",
+    "ground_truth": "Cytoplasm (cytoskeleton); nucleus.",
+    "relevant_uniprot_ids": ["P60709"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q033",
+    "question": "What post-translational modification occurs at the N-terminus of mature ACTB (P60709)?",
+    "ground_truth": "N-terminal acetylation: the initiator methionine is cleaved and the newly exposed N-terminal cysteine is acetylated.",
+    "relevant_uniprot_ids": ["P60709"],
+    "category": "structure",
+    "difficulty": "hard",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q034",
+    "question": "What reaction does human GAPDH (P04406) catalyze?",
+    "ground_truth": "Oxidative phosphorylation of glyceraldehyde-3-phosphate to 1,3-bisphosphoglycerate. Uses NAD+ as cofactor. Step 6 of glycolysis. EC 1.2.1.12.",
+    "relevant_uniprot_ids": ["P04406"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q035",
+    "question": "What cofactor does human GAPDH (P04406) require for catalysis?",
+    "ground_truth": "NAD (nicotinamide adenine dinucleotide, NAD+/NADH).",
+    "relevant_uniprot_ids": ["P04406"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q036",
+    "question": "How many amino acids does human GAPDH (P04406) contain?",
+    "ground_truth": "335 amino acids.",
+    "relevant_uniprot_ids": ["P04406"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q037",
+    "question": "In what metabolic pathway does human GAPDH (P04406) function?",
+    "ground_truth": "Glycolysis (and gluconeogenesis in the reverse direction).",
+    "relevant_uniprot_ids": ["P04406"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q038",
+    "question": "What is the subcellular location of human GAPDH (P04406)?",
+    "ground_truth": "Cytoplasm; nucleus. Predominantly cytoplasmic.",
+    "relevant_uniprot_ids": ["P04406"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q039",
+    "question": "What reaction does human L-lactate dehydrogenase A chain (LDHA, P00338) catalyze?",
+    "ground_truth": "Interconverts pyruvate and L-lactate using NAD+/NADH as cofactor. Under anaerobic conditions, reduces pyruvate to lactate (EC 1.1.1.27).",
+    "relevant_uniprot_ids": ["P00338"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q040",
+    "question": "How many amino acids does human LDHA (P00338) contain?",
+    "ground_truth": "332 amino acids.",
+    "relevant_uniprot_ids": ["P00338"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q041",
+    "question": "What is the quaternary structure of the LDH-5 isozyme composed of LDHA (P00338)?",
+    "ground_truth": "Homotetramer (four LDHA subunits). LDH isozymes range from LDH-1 (four LDHB subunits) to LDH-5 (four LDHA subunits).",
+    "relevant_uniprot_ids": ["P00338"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q042",
+    "question": "Why is LDHA (P00338) activity particularly important under anaerobic conditions?",
+    "ground_truth": "Regenerates NAD+ from NADH by reducing pyruvate to lactate, allowing glycolysis to continue in the absence of oxygen when the electron transport chain cannot oxidize NADH.",
+    "relevant_uniprot_ids": ["P00338"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q043",
+    "question": "What is the subcellular location of human LDHA (P00338)?",
+    "ground_truth": "Cytoplasm.",
+    "relevant_uniprot_ids": ["P00338"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q044",
+    "question": "What is the function of human myoglobin (MB, P02144)?",
+    "ground_truth": "Stores and transports oxygen in skeletal and cardiac muscle cells. Facilitates intracellular oxygen diffusion from the cell membrane to mitochondria.",
+    "relevant_uniprot_ids": ["P02144"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q045",
+    "question": "How many amino acids does human myoglobin (MB, P02144) contain?",
+    "ground_truth": "154 amino acids.",
+    "relevant_uniprot_ids": ["P02144"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q046",
+    "question": "What prosthetic group does myoglobin (MB, P02144) contain and what does it bind?",
+    "ground_truth": "Heme (iron-protoporphyrin IX). Binds one oxygen molecule (O2) per heme.",
+    "relevant_uniprot_ids": ["P02144"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q047",
+    "question": "What is the subcellular location of myoglobin (MB, P02144)?",
+    "ground_truth": "Cytoplasm of muscle cells.",
+    "relevant_uniprot_ids": ["P02144"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q048",
+    "question": "What is the primary biological function of human TNF (tumor necrosis factor, P01375)?",
+    "ground_truth": "Multifunctional pro-inflammatory cytokine. Regulates cell death (apoptosis and necroptosis), inflammatory responses, immune activation, and cell proliferation. Produced mainly by macrophages in response to infection.",
+    "relevant_uniprot_ids": ["P01375"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q049",
+    "question": "What quaternary structure does secreted human TNF (P01375) adopt?",
+    "ground_truth": "Homotrimer. Three TNF subunits assemble to form the biologically active secreted form.",
+    "relevant_uniprot_ids": ["P01375"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q050",
+    "question": "How many amino acids does the human TNF precursor (P01375) contain?",
+    "ground_truth": "233 amino acids (the transmembrane precursor; the secreted form is cleaved to produce a shorter soluble form of ~157 amino acids).",
+    "relevant_uniprot_ids": ["P01375"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q051",
+    "question": "Which cell type is the primary producer of TNF (P01375)?",
+    "ground_truth": "Macrophages (also produced by T lymphocytes, natural killer cells, mast cells, and neutrophils).",
+    "relevant_uniprot_ids": ["P01375"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q052",
+    "question": "Which receptor family does TNF (P01375) signal through?",
+    "ground_truth": "Tumor necrosis factor receptor (TNFR) superfamily. Binds TNFR1 (TNFRSF1A, p55) and TNFR2 (TNFRSF1B, p75).",
+    "relevant_uniprot_ids": ["P01375"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q053",
+    "question": "What is the primary function of human apolipoprotein E (APOE, P02649)?",
+    "ground_truth": "Mediates transport and metabolism of lipids (cholesterol, triglycerides) in blood and cerebrospinal fluid. Acts as a ligand for the LDL receptor, directing lipoprotein uptake by cells.",
+    "relevant_uniprot_ids": ["P02649"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q054",
+    "question": "Which APOE allele (P02649) is the strongest known genetic risk factor for late-onset Alzheimer's disease?",
+    "ground_truth": "APOE epsilon-4 (APOE4). The APOE4 allele carries Cys112Arg and Arg158 substitutions. One copy increases risk ~3-fold; two copies ~8-15-fold.",
+    "relevant_uniprot_ids": ["P02649"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q055",
+    "question": "How many amino acids does human APOE (P02649) contain?",
+    "ground_truth": "317 amino acids (including the 18-residue signal peptide; the mature secreted form is 299 amino acids).",
+    "relevant_uniprot_ids": ["P02649"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q056",
+    "question": "What lipoprotein disorder is caused by APOE2 homozygosity (dysfunctional APOE, P02649)?",
+    "ground_truth": "Hyperlipoproteinemia type III (familial dysbetalipoproteinemia), characterized by elevated cholesterol and triglycerides and premature atherosclerosis.",
+    "relevant_uniprot_ids": ["P02649"],
+    "category": "disease",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q057",
+    "question": "What is the subcellular location of secreted APOE (P02649)?",
+    "ground_truth": "Secreted; found in the extracellular space, associated with lipoprotein particles (chylomicrons, VLDL, HDL).",
+    "relevant_uniprot_ids": ["P02649"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q058",
+    "question": "What is the function of human prothrombin (F2, P00734) in blood coagulation?",
+    "ground_truth": "Precursor of thrombin. In the coagulation cascade, prothrombin is cleaved by the prothrombinase complex (Factor Xa + Factor Va) to generate active thrombin, which then converts fibrinogen to fibrin to form a clot.",
+    "relevant_uniprot_ids": ["P00734"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q059",
+    "question": "What type of protease is thrombin, the active form of prothrombin (F2, P00734)?",
+    "ground_truth": "Serine protease (serine endopeptidase). EC 3.4.21.5.",
+    "relevant_uniprot_ids": ["P00734"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q060",
+    "question": "How many amino acids does human prothrombin (F2, P00734) contain?",
+    "ground_truth": "622 amino acids.",
+    "relevant_uniprot_ids": ["P00734"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q061",
+    "question": "What vitamin-dependent modification is required for prothrombin (F2, P00734) to function?",
+    "ground_truth": "Gamma-carboxylation of glutamate residues, which is vitamin K-dependent. Gamma-carboxyglutamate (Gla) residues allow binding to Ca2+ and phospholipid membranes, essential for coagulation complex assembly.",
+    "relevant_uniprot_ids": ["P00734"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q062",
+    "question": "What coagulation disorder is caused by prothrombin (F2, P00734) deficiency?",
+    "ground_truth": "Prothrombin deficiency (hypoprothrombinemia), causing prolonged bleeding. The F2 20210G>A variant in the 3' UTR causes elevated prothrombin levels and increased thrombosis risk.",
+    "relevant_uniprot_ids": ["P00734"],
+    "category": "disease",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q063",
+    "question": "What is the function of E. coli chaperonin GroEL (P0A6F5)?",
+    "ground_truth": "Molecular chaperone. Facilitates correct folding of newly synthesized and stress-denatured proteins. Provides an isolated hydrophilic chamber where non-native proteins fold in an ATP-dependent manner.",
+    "relevant_uniprot_ids": ["P0A6F5"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q064",
+    "question": "What is the quaternary structure of E. coli GroEL (P0A6F5)?",
+    "ground_truth": "14-mer (tetradecamer) consisting of two stacked heptameric rings forming a barrel structure with a central cavity.",
+    "relevant_uniprot_ids": ["P0A6F5"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q065",
+    "question": "How many amino acids does E. coli GroEL (P0A6F5) contain per subunit?",
+    "ground_truth": "547 amino acids.",
+    "relevant_uniprot_ids": ["P0A6F5"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q066",
+    "question": "What enzymatic activity does E. coli GroEL (P0A6F5) possess to drive protein folding?",
+    "ground_truth": "ATPase activity. Hydrolyzes ATP to ADP, driving conformational changes that mediate substrate protein capture, encapsulation, and release cycles.",
+    "relevant_uniprot_ids": ["P0A6F5"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q067",
+    "question": "What co-chaperonin works together with E. coli GroEL (P0A6F5) and what is its role?",
+    "ground_truth": "GroES (chaperonin 10, P0A6F9). GroES caps the GroEL barrel as a heptameric lid, encapsulating the substrate protein in the folding chamber during the ATPase cycle.",
+    "relevant_uniprot_ids": ["P0A6F5"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q068",
+    "question": "What is the primary function of E. coli RecA (P0A7Z4)?",
+    "ground_truth": "Promotes ATP-dependent homologous DNA strand exchange. Central to DNA repair via homologous recombination and activates the SOS response by stimulating autocleavage of the LexA repressor.",
+    "relevant_uniprot_ids": ["P0A7Z4"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q069",
+    "question": "How many amino acids does E. coli RecA (P0A7Z4) contain?",
+    "ground_truth": "352 amino acids.",
+    "relevant_uniprot_ids": ["P0A7Z4"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q070",
+    "question": "What enzymatic activities does E. coli RecA (P0A7Z4) possess?",
+    "ground_truth": "DNA-dependent ATPase activity and DNA strand exchange activity. ATP hydrolysis is coupled to DNA strand exchange during homologous recombination.",
+    "relevant_uniprot_ids": ["P0A7Z4"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q071",
+    "question": "What nucleoprotein structure does E. coli RecA (P0A7Z4) form on DNA?",
+    "ground_truth": "A right-handed helical nucleoprotein filament on single-stranded DNA (ssDNA). This presynaptic filament is the active form that searches for homologous dsDNA.",
+    "relevant_uniprot_ids": ["P0A7Z4"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q072",
+    "question": "Which transcriptional response does E. coli RecA (P0A7Z4) induce upon DNA damage?",
+    "ground_truth": "The SOS response. RecA filaments stimulate autocleavage of the LexA repressor, derepressing over 40 SOS genes involved in DNA repair and damage tolerance.",
+    "relevant_uniprot_ids": ["P0A7Z4"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q073",
+    "question": "What is the function of human serotransferrin (TF, P02787)?",
+    "ground_truth": "Iron transport in the blood. Binds two ferric (Fe3+) ions and delivers iron to cells via receptor-mediated endocytosis through the transferrin receptor.",
+    "relevant_uniprot_ids": ["P02787"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q074",
+    "question": "How many iron ions can one molecule of human serotransferrin (TF, P02787) bind?",
+    "ground_truth": "Two Fe3+ ions, one in each of the two homologous lobes (N-lobe and C-lobe).",
+    "relevant_uniprot_ids": ["P02787"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q075",
+    "question": "How many amino acids does human serotransferrin (TF, P02787) contain?",
+    "ground_truth": "698 amino acids.",
+    "relevant_uniprot_ids": ["P02787"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q076",
+    "question": "What receptor does transferrin (TF, P02787) bind to deliver iron to cells?",
+    "ground_truth": "Transferrin receptor 1 (TFRC/TfR1, P02786). Diferric transferrin binds TfR1 at the cell surface; the complex is endocytosed and iron is released in the acidic endosome.",
+    "relevant_uniprot_ids": ["P02787"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q077",
+    "question": "What rare disease results from complete absence of transferrin (TF, P02787)?",
+    "ground_truth": "Atransferrinemia. Characterized by hypochromic microcytic anemia despite iron overload in parenchymal organs due to unregulated iron absorption.",
+    "relevant_uniprot_ids": ["P02787"],
+    "category": "disease",
+    "difficulty": "hard",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q078",
+    "question": "What reaction does human glutathione reductase (GSR, P00390) catalyze?",
+    "ground_truth": "Reduces oxidized glutathione (GSSG) to two molecules of reduced glutathione (GSH) using NADPH as the electron donor. EC 1.8.1.7.",
+    "relevant_uniprot_ids": ["P00390"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q079",
+    "question": "What cofactors does human GSR (P00390) require?",
+    "ground_truth": "FAD (flavin adenine dinucleotide) as a tightly bound prosthetic group, and NADPH as the electron donor substrate.",
+    "relevant_uniprot_ids": ["P00390"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q080",
+    "question": "How many amino acids does human GSR (P00390) contain?",
+    "ground_truth": "522 amino acids.",
+    "relevant_uniprot_ids": ["P00390"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q081",
+    "question": "In what subcellular compartments is human GSR (P00390) found?",
+    "ground_truth": "Cytoplasm; mitochondrion. Present in both compartments to maintain glutathione redox balance.",
+    "relevant_uniprot_ids": ["P00390"],
+    "category": "localization",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q082",
+    "question": "What is the biological importance of the reaction catalyzed by human GSR (P00390)?",
+    "ground_truth": "Maintains the cellular pool of reduced glutathione (GSH), which is essential for antioxidant defense, detoxification of reactive oxygen species, and recycling of glutathione peroxidase.",
+    "relevant_uniprot_ids": ["P00390"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q083",
+    "question": "What is the primary function of human BRCA1 (P38398)?",
+    "ground_truth": "Tumor suppressor involved in maintaining genomic stability. Plays a central role in homologous recombination repair of DNA double-strand breaks. Also functions as a scaffold in the BRCA1-A, BRCA1-B, and BRCA1-C complexes and has E3 ubiquitin ligase activity via its RING domain.",
+    "relevant_uniprot_ids": ["P38398"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q084",
+    "question": "What domain at the N-terminus of BRCA1 (P38398) mediates its ubiquitin ligase activity?",
+    "ground_truth": "RING (Really Interesting New Gene) domain. BRCA1 forms a heterodimer with BARD1 via their RING domains, which together confer E3 ubiquitin ligase activity.",
+    "relevant_uniprot_ids": ["P38398"],
+    "category": "structure",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q085",
+    "question": "How many amino acids does human BRCA1 (P38398) contain?",
+    "ground_truth": "1863 amino acids.",
+    "relevant_uniprot_ids": ["P38398"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q086",
+    "question": "What cancers are associated with pathogenic germline variants in BRCA1 (P38398)?",
+    "ground_truth": "Breast cancer and ovarian cancer primarily. Also associated with fallopian tube carcinoma, peritoneal carcinoma, and increased risk of pancreatic and prostate cancer.",
+    "relevant_uniprot_ids": ["P38398"],
+    "category": "disease",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q087",
+    "question": "What is the subcellular location of BRCA1 (P38398)?",
+    "ground_truth": "Nucleus. Localizes to nuclear foci (DNA repair foci) upon DNA damage.",
+    "relevant_uniprot_ids": ["P38398"],
+    "category": "localization",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q088",
+    "question": "What is the function of human hemoglobin subunit alpha-1 (HBA1, P69905)?",
+    "ground_truth": "Oxygen transport in red blood cells. Combines with hemoglobin subunit beta (HBB) to form the adult hemoglobin alpha2-beta2 heterotetramer. Binds oxygen via heme.",
+    "relevant_uniprot_ids": ["P69905"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q089",
+    "question": "How many amino acids does human HBA1 (P69905) contain?",
+    "ground_truth": "142 amino acids.",
+    "relevant_uniprot_ids": ["P69905"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q090",
+    "question": "What protein does HBA1 (P69905) associate with to form adult hemoglobin?",
+    "ground_truth": "Hemoglobin subunit beta (HBB, P68871). Two HBA1 chains and two HBB chains form the alpha2-beta2 adult hemoglobin heterotetramer.",
+    "relevant_uniprot_ids": ["P69905", "P68871"],
+    "category": "structure",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q091",
+    "question": "What disease is caused by mutations in HBA1 (P69905) or its paralog HBA2?",
+    "ground_truth": "Alpha-thalassemia. Reduced alpha-chain production leads to hemolytic anemia; severity ranges from silent carrier to hydrops fetalis (Hb Bart's) depending on how many of the four alpha-globin gene copies are affected.",
+    "relevant_uniprot_ids": ["P69905"],
+    "category": "disease",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q092",
+    "question": "Which two UniProt entries encode the protein subunits that form the adult human hemoglobin tetramer (HbA)?",
+    "ground_truth": "P69905 (hemoglobin subunit alpha-1, HBA1) and P68871 (hemoglobin subunit beta, HBB). The tetramer is alpha2-beta2.",
+    "relevant_uniprot_ids": ["P69905", "P68871"],
+    "category": "comparative",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q093",
+    "question": "How do SOD1 (P00441) and GSR (P00390) cooperate in cellular antioxidant defense?",
+    "ground_truth": "SOD1 dismutates superoxide radicals to hydrogen peroxide (first-line defense). GSR regenerates reduced glutathione (GSH) from GSSG using NADPH, maintaining glutathione for use by glutathione peroxidase, which detoxifies hydrogen peroxide. They act at complementary steps in the reactive oxygen species defense network.",
+    "relevant_uniprot_ids": ["P00441", "P00390"],
+    "category": "comparative",
+    "difficulty": "hard",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q094",
+    "question": "Both TP53 (P04637) and BRCA1 (P38398) are tumor suppressors. What distinct DNA-damage response roles do they play?",
+    "ground_truth": "TP53 is a transcription factor that activates genes for cell cycle arrest, apoptosis, and senescence in response to DNA damage. BRCA1 is a scaffold/E3 ligase that facilitates physical DNA repair by homologous recombination. TP53 decides cell fate; BRCA1 executes repair.",
+    "relevant_uniprot_ids": ["P04637", "P38398"],
+    "category": "comparative",
+    "difficulty": "hard",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q095",
+    "question": "Which E. coli chaperone system involves GroEL (P0A6F5) and its partner, and what is the combined mechanism?",
+    "ground_truth": "The GroEL/GroES system. GroEL forms a double-ring barrel; substrate proteins bind in the cavity. GroES caps one ring upon ATP binding, encapsulating the substrate for folding. ATP hydrolysis and GroES dissociation release the folded (or incompletely folded) protein for another cycle.",
+    "relevant_uniprot_ids": ["P0A6F5"],
+    "category": "function",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q096",
+    "question": "Which protein stores oxygen in muscle and which transports it in blood? Compare their heme-binding stoichiometry.",
+    "ground_truth": "Myoglobin (MB, P02144) stores oxygen in muscle and binds 1 O2 per molecule (monomer with one heme). Adult hemoglobin (alpha2-beta2 tetramer of HBA1/P69905 and HBB/P68871) transports oxygen in blood and binds 4 O2 per tetramer (one heme per subunit, cooperative binding).",
+    "relevant_uniprot_ids": ["P02144", "P69905", "P68871"],
+    "category": "comparative",
+    "difficulty": "medium",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q097",
+    "question": "What feature distinguishes the oxidoreductase GAPDH (P04406) from LDHA (P00338) in terms of pathway role and cofactor use?",
+    "ground_truth": "GAPDH (EC 1.2.1.12) oxidizes glyceraldehyde-3-phosphate in glycolysis using NAD+ and coupled to substrate-level phosphorylation. LDHA (EC 1.1.1.27) reduces pyruvate to lactate at the end of anaerobic glycolysis using NADH. GAPDH generates NADH; LDHA consumes NADH to regenerate NAD+.",
+    "relevant_uniprot_ids": ["P04406", "P00338"],
+    "category": "comparative",
+    "difficulty": "hard",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q098",
+    "question": "Which protein is required to form fibrin from fibrinogen during blood coagulation, and what type of enzyme activity is responsible?",
+    "ground_truth": "Thrombin, the activated form of prothrombin (F2, P00734). Thrombin is a serine protease (EC 3.4.21.5) that cleaves fibrinogen to produce fibrin monomers, which then polymerize to form the clot.",
+    "relevant_uniprot_ids": ["P00734"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q099",
+    "question": "What are the three APOE isoforms (from gene P02649), and how do they differ at the protein level?",
+    "ground_truth": "APOE2 (Cys112, Cys158), APOE3 (Cys112, Arg158), and APOE4 (Arg112, Arg158). The isoforms differ at residues 112 and 158. APOE4 has the highest LDL-receptor binding, reduces risk of Alzheimer's protection compared to APOE2 and APOE3.",
+    "relevant_uniprot_ids": ["P02649"],
+    "category": "structure",
+    "difficulty": "hard",
+    "retrieval_bias": "text"
+  },
+  {
+    "id": "Q100",
+    "question": "Which human protein delivers iron to tissues by binding transferrin receptor 1, and how many metal ions does it carry per molecule?",
+    "ground_truth": "Serotransferrin (TF, P02787). It carries two Fe3+ ions per molecule (one per lobe) and delivers them via receptor-mediated endocytosis after binding transferrin receptor 1 (TFRC).",
+    "relevant_uniprot_ids": ["P02787"],
+    "category": "function",
+    "difficulty": "easy",
+    "retrieval_bias": "text"
+  }
+]

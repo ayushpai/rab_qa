@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(salloc --partition=overcap --gres=gpu:l40s:1 --time=1:00:00 bash -c ' *)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+.env
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+
+data/raw/
+data/processed/
+data/embeddings/
+
+eval/results.json
