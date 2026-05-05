@@ -1,14 +1,15 @@
-"""Evaluate retrieval (Recall@5, MRR) and generation quality (LLM judge) across modes."""
+"""Evaluate retrieval and generation quality across retrieval modes."""
 
 import argparse
 import json
+import math
 import re
 import time
 from pathlib import Path
 
 from tqdm import tqdm
 
-from src.generate import DEFAULT_MODEL, generate_answer, make_client
+from src.generate import DEFAULT_MODEL, _call_with_retry, generate_answer, make_client
 from src.retrieve import Retriever
 
 
@@ -24,10 +25,11 @@ Generated Answer: {answer}
 Respond in JSON: {{"correctness": X, "groundedness": X, "completeness": X}}"""
 
 
-def _recall_at_k(retrieved_ids: list[str], relevant_ids: list[str]) -> float:
+def _recall_at_k(retrieved_ids: list[str], relevant_ids: list[str], k: int) -> float:
     if not relevant_ids:
         return 0.0
-    hit = sum(1 for r in relevant_ids if r in retrieved_ids)
+    top_k = retrieved_ids[:k]
+    hit = sum(1 for r in relevant_ids if r in top_k)
     return hit / len(relevant_ids)
 
 
@@ -39,9 +41,51 @@ def _mrr(retrieved_ids: list[str], relevant_ids: list[str]) -> float:
     return 0.0
 
 
+def _map(retrieved_ids: list[str], relevant_ids: list[str]) -> float:
+    """Mean Average Precision over the retrieved list."""
+    if not relevant_ids:
+        return 0.0
+    relevant = set(relevant_ids)
+    hits = 0
+    precision_sum = 0.0
+    for i, rid in enumerate(retrieved_ids, 1):
+        if rid in relevant:
+            hits += 1
+            precision_sum += hits / i
+    return precision_sum / len(relevant_ids)
+
+
+def _ndcg_at_k(retrieved_ids: list[str], relevant_ids: list[str], k: int) -> float:
+    """NDCG@k with binary relevance."""
+    if not relevant_ids:
+        return 0.0
+    relevant = set(relevant_ids)
+    dcg = sum(
+        1.0 / math.log2(i + 1)
+        for i, rid in enumerate(retrieved_ids[:k], 1)
+        if rid in relevant
+    )
+    # ideal: all relevant docs ranked first
+    ideal_hits = min(len(relevant_ids), k)
+    idcg = sum(1.0 / math.log2(i + 1) for i in range(1, ideal_hits + 1))
+    return dcg / idcg if idcg > 0 else 0.0
+
+
+def _all_metrics(retrieved_ids: list[str], relevant_ids: list[str]) -> dict:
+    return {
+        "recall_at_1":  _recall_at_k(retrieved_ids, relevant_ids, 1),
+        "recall_at_3":  _recall_at_k(retrieved_ids, relevant_ids, 3),
+        "recall_at_5":  _recall_at_k(retrieved_ids, relevant_ids, 5),
+        "recall_at_10": _recall_at_k(retrieved_ids, relevant_ids, 10),
+        "mrr":          _mrr(retrieved_ids, relevant_ids),
+        "map":          _map(retrieved_ids, relevant_ids),
+        "ndcg_at_5":    _ndcg_at_k(retrieved_ids, relevant_ids, 5),
+        "ndcg_at_10":   _ndcg_at_k(retrieved_ids, relevant_ids, 10),
+    }
+
+
 def _modes_for_question(q: dict, modes: tuple[str, ...]) -> list[str]:
-    has_seq = bool(q.get("sequence"))
-    return [m for m in modes if m == "text" or has_seq]
+    return list(modes)
 
 
 def evaluate(
@@ -56,6 +100,11 @@ def evaluate(
 ) -> dict:
     with open(questions_path) as f:
         questions = json.load(f)
+
+    METRIC_KEYS = [
+        "recall_at_1", "recall_at_3", "recall_at_5", "recall_at_10",
+        "mrr", "map", "ndcg_at_5", "ndcg_at_10",
+    ]
 
     results = []
     for q in tqdm(questions, desc="Evaluating"):
@@ -75,8 +124,7 @@ def evaluate(
             retrieve_time = time.perf_counter() - t0
 
             retrieved_ids = [p["id"] for p in retrieved]
-            recall = _recall_at_k(retrieved_ids, q.get("relevant_uniprot_ids", []))
-            mrr = _mrr(retrieved_ids, q.get("relevant_uniprot_ids", []))
+            metrics = _all_metrics(retrieved_ids, q.get("relevant_uniprot_ids", []))
 
             answer = ""
             gen_time = 0.0
@@ -89,8 +137,7 @@ def evaluate(
             per_q["modes"][mode] = {
                 "retrieved_ids": retrieved_ids,
                 "retrieved_names": [p.get("name", "") for p in retrieved],
-                "recall_at_k": recall,
-                "mrr": mrr,
+                **metrics,
                 "answer": answer,
                 "retrieve_time_s": retrieve_time,
                 "generate_time_s": gen_time,
@@ -99,13 +146,12 @@ def evaluate(
 
     summary: dict = {"per_mode": {}}
     for mode in modes:
-        recalls = [r["modes"][mode]["recall_at_k"] for r in results if mode in r["modes"]]
-        mrrs = [r["modes"][mode]["mrr"] for r in results if mode in r["modes"]]
-        if recalls:
+        mode_rows = [r["modes"][mode] for r in results if mode in r["modes"]]
+        if mode_rows:
+            n = len(mode_rows)
             summary["per_mode"][mode] = {
-                "n": len(recalls),
-                "mean_recall_at_k": sum(recalls) / len(recalls),
-                "mean_mrr": sum(mrrs) / len(mrrs),
+                "n": n,
+                **{k: sum(row[k] for row in mode_rows) / n for k in METRIC_KEYS},
             }
 
     out = {"summary": summary, "results": results}
@@ -114,8 +160,21 @@ def evaluate(
         json.dump(out, f, indent=2)
 
     print("\n=== Retrieval summary ===")
-    for mode, stats in summary["per_mode"].items():
-        print(f"  {mode:8s}  n={stats['n']:3d}  Recall@{top_k}={stats['mean_recall_at_k']:.3f}  MRR={stats['mean_mrr']:.3f}")
+    header = f"  {'mode':8s}  {'n':>3}  R@1    R@3    R@5    R@10   MRR    MAP    NDCG@5 NDCG@10"
+    print(header)
+    print("  " + "-" * (len(header) - 2))
+    for mode, s in summary["per_mode"].items():
+        print(
+            f"  {mode:8s}  {s['n']:3d}"
+            f"  {s['recall_at_1']:.3f}"
+            f"  {s['recall_at_3']:.3f}"
+            f"  {s['recall_at_5']:.3f}"
+            f"  {s['recall_at_10']:.3f}"
+            f"  {s['mrr']:.3f}"
+            f"  {s['map']:.3f}"
+            f"  {s['ndcg_at_5']:.3f}"
+            f"  {s['ndcg_at_10']:.3f}"
+        )
     print(f"\nSaved results to {out_path}")
     return out
 
@@ -150,12 +209,12 @@ def llm_judge(
                 ground_truth=r["ground_truth"],
                 answer=m["answer"],
             )
-            response = client.chat.completions.create(
+            text = _call_with_retry(
+                client,
                 model=chosen_model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.0,
             )
-            text = response.choices[0].message.content or ""
             scores = _parse_judge_json(text) or {}
             m["judge"] = {
                 "correctness": scores.get("correctness"),
@@ -206,7 +265,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run retrieval + (optional) LLM judge eval")
     parser.add_argument("--questions", default="eval/questions.json")
     parser.add_argument("--out", default="eval/results.json")
-    parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--modes", nargs="+", default=["text", "protein", "hybrid"])
     parser.add_argument("--skip-generate", action="store_true")
     parser.add_argument("--judge", action="store_true", help="Run LLM judge after eval")

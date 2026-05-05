@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(salloc --partition=overcap --gres=gpu:l40s:1 --time=1:00:00 bash -c ' *)",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('/coc/flash5/apai65/rab_qa/data/processed/proteins.json'\\)\\); print\\('total proteins:', len\\(d\\)\\); print\\('keys:', list\\(d[0].keys\\(\\)\\)\\); import statistics; lens=[len\\(p['sequence']\\) for p in d]; print\\('seq len min/median/max:', min\\(lens\\), int\\(statistics.median\\(lens\\)\\), max\\(lens\\)\\); ann=[len\\(p['annotation']\\) for p in d]; print\\('annot char min/median/max:', min\\(ann\\), int\\(statistics.median\\(ann\\)\\), max\\(ann\\)\\)\")"
+    ]
+  }
+}

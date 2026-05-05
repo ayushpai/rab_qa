@@ -8,7 +8,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+MODEL_NAME = "pritamdeka/PubMedBERT-mnli-snli-scinli-scitail-mednli-stsb"
 
 
 def embed_text(proteins: list[dict], batch_size: int = 64, model_name: str = MODEL_NAME) -> np.ndarray:

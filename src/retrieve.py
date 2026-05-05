@@ -1,17 +1,19 @@
 """Retriever: text-only, protein-only, and hybrid retrieval over FAISS indices."""
 
 import json
+import re
 from pathlib import Path
 
 import faiss
 import numpy as np
 import torch
+from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer
 from transformers import AutoModel, AutoTokenizer
 
 
 AMINO_ACIDS = set("ACDEFGHIKLMNPQRSTVWY")
-TEXT_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+TEXT_MODEL_NAME = "pritamdeka/PubMedBERT-mnli-snli-scinli-scitail-mednli-stsb"
 PROTEIN_MODEL_NAME = "facebook/esm2_t6_8M_UR50D"
 MAX_RESIDUES = 1022
 
@@ -42,6 +44,13 @@ class Retriever:
         with open(proteins_path) as f:
             proteins_list = json.load(f)
         self.proteins: dict[str, dict] = {p["id"]: p for p in proteins_list}
+
+        # BM25 index over annotation strings, aligned with id_map order
+        corpus = [
+            re.sub(r"[^a-z0-9 ]", " ", self.proteins[pid]["annotation"].lower()).split()
+            for pid in self.id_map
+        ]
+        self.bm25 = BM25Okapi(corpus)
 
         self.text_model_name = text_model_name
         self.protein_model_name = protein_model_name
@@ -112,39 +121,49 @@ class Retriever:
         scores, idxs = self.protein_index.search(vec, top_k)
         return self._lookup(idxs[0], scores[0])
 
+    def retrieve_bm25(self, query: str, top_k: int = 5) -> list[dict]:
+        tokens = re.sub(r"[^a-z0-9 ]", " ", query.lower()).split()
+        scores = self.bm25.get_scores(tokens)
+        top_idxs = np.argpartition(scores, -top_k)[-top_k:]
+        top_idxs = top_idxs[np.argsort(scores[top_idxs])[::-1]]
+        return self._lookup(top_idxs, scores[top_idxs])
+
     def retrieve_hybrid(
-        self, query: str, sequence: str, top_k: int = 5, alpha: float = 0.5
+        self, query: str, sequence: str, top_k: int = 5, rrf_k: int = 60,
     ) -> list[dict]:
         text_vec = self._encode_text(query)
         prot_vec = self._encode_sequence(sequence)
 
-        pool = top_k * 4
+        pool = top_k * 10
         t_scores, t_idxs = self.text_index.search(text_vec, pool)
         p_scores, p_idxs = self.protein_index.search(prot_vec, pool)
 
-        merged: dict[int, dict] = {}
-        for i, s in zip(t_idxs[0], t_scores[0]):
-            if i < 0:
-                continue
-            merged.setdefault(int(i), {"text": 0.0, "protein": 0.0})["text"] = float(s)
-        for i, s in zip(p_idxs[0], p_scores[0]):
-            if i < 0:
-                continue
-            merged.setdefault(int(i), {"text": 0.0, "protein": 0.0})["protein"] = float(s)
+        # BM25 exact-keyword ranking
+        tokens = re.sub(r"[^a-z0-9 ]", " ", query.lower()).split()
+        bm25_scores = self.bm25.get_scores(tokens)
+        bm25_top = np.argpartition(bm25_scores, -pool)[-pool:]
+        bm25_top = bm25_top[np.argsort(bm25_scores[bm25_top])[::-1]]
 
-        ranked = sorted(
-            merged.items(),
-            key=lambda kv: alpha * kv[1]["text"] + (1 - alpha) * kv[1]["protein"],
-            reverse=True,
-        )[:top_k]
+        # RRF over all three modalities: dense-text + BM25 + protein
+        rrf: dict[int, float] = {}
+        for rank, idx in enumerate(t_idxs[0]):
+            if idx < 0:
+                continue
+            rrf[int(idx)] = rrf.get(int(idx), 0.0) + 1.0 / (rrf_k + rank + 1)
+        for rank, idx in enumerate(bm25_top):
+            rrf[int(idx)] = rrf.get(int(idx), 0.0) + 1.0 / (rrf_k + rank + 1)
+        for rank, idx in enumerate(p_idxs[0]):
+            if idx < 0:
+                continue
+            rrf[int(idx)] = rrf.get(int(idx), 0.0) + 1.0 / (rrf_k + rank + 1)
+
+        ranked = sorted(rrf.items(), key=lambda kv: kv[1], reverse=True)[:top_k]
 
         results = []
-        for idx, parts in ranked:
+        for idx, score in ranked:
             pid = self.id_map[idx]
             entry = dict(self.proteins[pid])
-            entry["_score"] = alpha * parts["text"] + (1 - alpha) * parts["protein"]
-            entry["_score_text"] = parts["text"]
-            entry["_score_protein"] = parts["protein"]
+            entry["_score"] = score
             results.append(entry)
         return results
 
@@ -154,7 +173,6 @@ class Retriever:
         sequence: str | None = None,
         mode: str = "auto",
         top_k: int = 5,
-        alpha: float = 0.5,
     ) -> list[dict]:
         if mode == "auto":
             if sequence:
@@ -164,12 +182,10 @@ class Retriever:
             else:
                 mode = "text"
 
-        if mode == "text":
+        if mode == "text" or not sequence:
             return self.retrieve_text(query, top_k=top_k)
         if mode == "protein":
-            seq = sequence or query.strip()
-            return self.retrieve_protein(seq, top_k=top_k)
+            return self.retrieve_protein(sequence, top_k=top_k)
         if mode == "hybrid":
-            seq = sequence or query.strip()
-            return self.retrieve_hybrid(query, seq, top_k=top_k, alpha=alpha)
+            return self.retrieve_hybrid(query, sequence, top_k=top_k)
         raise ValueError(f"Unknown mode: {mode}")

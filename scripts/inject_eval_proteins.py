@@ -32,7 +32,7 @@ EVAL_IDS = [
     "P02649",  # APOE
     "P00734",  # F2 / prothrombin
     "P0A6F5",  # GroEL
-    "P0A7Z4",  # RecA
+    "P0A7G6",  # RecA
     "P02787",  # TF / transferrin
     "P00390",  # GSR
     "P38398",  # BRCA1
